@@ -1,15 +1,154 @@
-
 <!--Get request-->
-/test/students.php?student_name=name&student_surname=surname&st_age=age&st_id=id&_st_faculty=faculty
+<!--/test/students.php?student_name=name&student_surname=surname&st_age=age&st_id=id&_st_faculty=faculty-->
 
 <!--Post request-->
-POST /echo/post/json HTTP/1.1
-Host: reqbin.com
+<!--POST /echo/post/json HTTP/1.1
+Host: reqbin.com-->
 
-{
+<!--{
   "Student_name": "Name",
   "Student_surname": "Surname",
   "St_age": 55,
   "St_id": 59272,
   "Facultu": "Faculty1"
+}-->
+
+<!--Form with get method-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    function postData() {
+  // Get data from form fields
+  const fname = document.getElementById("fname").value;
+  const lname = document.getElementById("lname").value;
+  const st_age = document.getElementById("st_age").value;
+  const st_id = document.getElementById("st_id").value;
+  const st_faculty = document.getElementById("st_faculty").value;  
+
+  // Create a JavaScript object to represent the data
+  const data = {
+    fname: fname,
+    lname: lname,
+    st_age: st_age,
+    st_id: st_id,
+    st_faculty: st_faculty,
+  };
+
+  // Convert the JavaScript object to JSON
+  const jsonData = JSON.stringify(data);
+
+  
+  fetch("/your-api-endpoint", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: jsonData
+  });
+}</script>
+  
+
+</head>
+<body>
+
+<form action="/action_page.php" target="_blank" method="get" autocomplete="on" novalidate>
+  
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+
+  <label for="st_age">Age:</label><br>
+  <input type="text" id="st_age" name="st_age"><br>
+
+  <label for="st_id">Student id:</label><br>
+  <input type="text" id="st_id" name="st_id"><br>
+
+  <label for="st_faculty">Age:</label><br>
+  <input type="text" id="st_faculty" name="st_faculty"><br>
+
+
+  <input type="submit" value="Submit"><br><br><br>
+
+</form>
+
+<!--Form with post method-->
+<form action="/action_page.php" target="_blank" method="post" autocomplete="on" novalidate>
+  
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+
+  <label for="st_age">Age:</label><br>
+  <input type="text" id="st_age" name="st_age"><br>
+
+  <label for="st_id">Student id:</label><br>
+  <input type="text" id="st_id" name="st_id"><br>
+
+  <label for="st_faculty">Age:</label><br>
+  <input type="text" id="st_faculty" name="st_faculty"><br>
+
+
+  <input type="submit" value="Submit"><br><br><br>
+
+</form>
+
+<!--Form with json post method-->
+
+<form action="/action_page.php" target="_blank" method="post" autocomplete="on" novalidate>
+  
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+
+  <label for="st_age">Age:</label><br>
+  <input type="text" id="st_age" name="st_age"><br>
+
+  <label for="st_id">Student id:</label><br>
+  <input type="text" id="st_id" name="st_id"><br>
+
+  <label for="st_faculty">Age:</label><br>
+  <input type="text" id="st_faculty" name="st_faculty"><br>
+
+
+  <button onclick="postData">Submitt</button><br><br><br>
+
+</form>
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/J9tNPv8udi8?si=E1m8DsUU4xmJWMIN" title="YouTube video player" >
+</iframe><br><br><br>
+
+
+
+<button onclick="getLocation()">Get geolocation</button>
+
+<p id="result"></p>
+
+<script>
+var x = document.getElementById("result");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
 }
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+
+</body>
+</html>
